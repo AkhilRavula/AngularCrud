@@ -1,4 +1,4 @@
-# Built Using KudVenkat Angualr Course
+# Built Using KudVenkat Angular Course
 
 Bootstrap is completely new when compared to actual tutorial
 
