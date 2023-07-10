@@ -1,0 +1,15 @@
+.imgclass
+{
+    height: 200px;
+    width: 350px;
+}
+.cardmargin
+{
+    margin-top: 20px;
+    border-color: #5379a294;
+}
+.vertical-align
+{
+    display: flex;
+    align-items: center;
+}

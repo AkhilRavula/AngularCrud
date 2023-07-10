@@ -1,0 +1,62 @@
+<div class="card cardmargin" *ngFor="let employee of Employees">
+    <h5 class="card-header" style="background-color: #5379a294;">
+        {{employee.name}}
+    </h5>
+    <div class="card-body">
+        <div class="row vertical-align">
+            <div class="col-md-4">
+                 <img class="imgclass" src="{{employee.Photopath}}">
+            </div>
+            <div class="col-md-8">
+              <div class="row">               
+                <div class="col-md-6">
+                  Gender
+                </div>
+                <div class="col-md-6">
+                    : {{employee.gender}}
+                </div>
+              </div>
+              <div class="row">               
+                <div class="col-md-6">
+                  DateofBirth
+                </div>
+                <div class="col-md-6">
+                    : {{employee.DateofBirth.toLocaleDateString()}}
+                </div>
+              </div>
+              <div class="row">               
+                <div class="col-md-6">
+                  PhoneNumber
+                </div>
+                <div class="col-md-6">
+                    : {{employee.phonenumber}}
+                </div>
+              </div>
+              <div class="row">               
+                <div class="col-md-6">
+                  Email
+                </div>
+                <div class="col-md-6">
+                    : {{employee.email}}
+                </div>
+              </div>
+              <div class="row">               
+                <div class="col-md-6">
+                  Department
+                </div>
+                <div class="col-md-6">
+                    : {{employee.Department}}
+                </div>
+              </div>
+              <div class="row">               
+                <div class="col-md-6">
+                  ISActive
+                </div>
+                <div class="col-md-6">
+                    : {{employee.IsActive}}
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
