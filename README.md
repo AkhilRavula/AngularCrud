@@ -1,6 +1,14 @@
-# AngularCrud
+# Built Using KudVenkat Angular Course
+
+Bootstrap is completely new when compared to actual tutorial
+
+## AngularCrud
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.5.
+
+## BootStrap
+
+This project is built with BootStrap 5.3.0
 
 ## Development server
 
