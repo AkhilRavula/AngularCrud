@@ -1,6 +1,6 @@
 <div class="card cardmargin" *ngFor="let employee of Employees">
     <h5 class="card-header" style="background-color: #5379a294;">
-        {{employee.name}}
+        {{employee.FullName}}
     </h5>
     <div class="card-body">
         <div class="row vertical-align">
@@ -44,8 +44,13 @@
                 <div class="col-md-6">
                   Department
                 </div>
-                <div class="col-md-6">
-                    : {{employee.Department}}
+                <div class="col-md-6" [ngSwitch]="employee.Department">
+                    : 
+                    <span *ngSwitchCase="1">HelpDesk</span>
+                    <span *ngSwitchCase="2">HR</span>
+                    <span *ngSwitchCase="3">IT</span>
+                    <span *ngSwitchCase="4">Operations</span>
+                    <span *ngSwitchDefault>Admin</span>
                 </div>
               </div>
               <div class="row">               

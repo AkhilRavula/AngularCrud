@@ -6,8 +6,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatNativeDateModule} from '@angular/material/core';
 import{BsDatepickerModule} from  'ngx-bootstrap/datepicker'
-
-
+import {ConfirmPasswordValidator} from './Shared/employee.password.validator'
+import {employeeservice} from './employees/employee.service'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeslistComponent } from './employees/employeeslist.component';
@@ -18,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     EmployeeslistComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ConfirmPasswordValidator
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [employeeservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
