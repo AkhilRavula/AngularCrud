@@ -13,13 +13,16 @@ import { AppComponent } from './app.component';
 import { EmployeeslistComponent } from './employees/employeeslist.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { canDeactivateGaurdService } from './employees/create-employee.candeac.service';
+import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeslistComponent,
     CreateEmployeeComponent,
-    ConfirmPasswordValidator
+    ConfirmPasswordValidator,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,

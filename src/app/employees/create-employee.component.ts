@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm }   from '@angular/forms';
 import { DepartmentList } from '../Models/Department.model';
 import { Employee } from '../Models/employee.model';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateEmployeeComponent {
 
-
+   @ViewChild('employeeForm') public createempform! : NgForm;
    employee : Employee={
     id:1,email:"",FullName:"", gender:"", DateofBirth:new Date(2023,2,2),
      Department:"", IsActive:true,phonenumber:123456789,
