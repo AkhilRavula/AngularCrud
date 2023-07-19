@@ -1,4 +1,9 @@
-<div class="card cardmargin" *ngFor="let employee of Employees" >
+<div class="form-group">
+   <input type="text" class="form-control mt-3" style="width: 200px;"
+    [(ngModel)]="SearchByTerm" placeholder="Search By Name">
+</div>
+
+<div class="card cardmargin" *ngFor="let employee of Employees | employeefilter : SearchByTerm" >
   <div (click)="OnClick(employee.id)">
     <h5 class="card-header" style="background-color: #5379a294;cursor: pointer;" [class.bg-success]="Selectedempid===employee.id">
         {{employee.FullName}}

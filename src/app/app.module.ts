@@ -15,6 +15,7 @@ import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { canDeactivateGaurdService } from './employees/create-employee.candeac.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
+import { EmployeePipeFilter } from './Models/employeefilter.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EmployeeDetailsComponent } from './employees/employee-details.component
     EmployeeslistComponent,
     CreateEmployeeComponent,
     ConfirmPasswordValidator,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    EmployeePipeFilter
   ],
   imports: [
     BrowserModule,

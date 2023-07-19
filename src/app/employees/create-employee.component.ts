@@ -56,7 +56,9 @@ export class CreateEmployeeComponent {
 
   SaveEmployee() : void
   {
-    this.employeeservice_.Save(this.employee);
+    const newemp:Employee = Object.assign({},this.employee);
+    this.employeeservice_.Save(newemp);
+    this.createempform.reset();
     this.router_.navigate(['List']);
   }
   

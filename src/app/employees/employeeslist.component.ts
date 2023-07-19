@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router'
 export class EmployeeslistComponent implements OnInit {
   Employees! : Employee[] ;
   Selectedempid! : Number;
+  SearchByTerm! : string;
    constructor(private listempservice : employeeservice,
     private Router_:Router,private ActivatedRoute_:ActivatedRoute)
    {
