@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Employee } from "../Models/employee.model";
+import { Observable,of,delay } from "rxjs";
 
-
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+ })
 
 export class employeeservice {
 
@@ -41,11 +43,23 @@ export class employeeservice {
             IsActive: false,
             Photopath: 'assets/Images/123.jpg'
           },
+          {
+            id: 5,
+            FullName: 'Akhil',
+            gender: 'Male',
+            email: 'mark@pragimtech.com',
+            DateofBirth: new Date('10/25/1988'),
+            Department: '4',
+            IsActive: true,
+            Photopath: 'assets/Images/123.jpg',
+            phonenumber: 2345978642
+          }
     ]
 
-    GetEmployees() : Employee[]
+     GetEmployees() : Observable<Employee[]>
     {
-        return this.ListEmployees;
+        return of(this.ListEmployees).pipe(
+        delay(1000));
     }
 
     GetEmployee(empid:number) : any

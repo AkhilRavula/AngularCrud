@@ -4,13 +4,18 @@ import { EmployeeslistComponent } from './employees/employeeslist.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { canDeactivateGaurdService } from './employees/create-employee.candeac.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
+import { EmployeeListResolver } from './employees/employeelist.service.resolve';
+import { PageNotFoundComponent } from './page-not-found.component';
+import { CheckForEmployeeDetails } from './employees/canactivate.employeeid';
 
 const routes: Routes = [
   {
-    path : 'List' ,component: EmployeeslistComponent
+    path : 'List' ,
+    component: EmployeeslistComponent
+    //resolve : {employeelist : EmployeeListResolver}
   },
   {
-    path : 'employees/:id' ,component: EmployeeDetailsComponent
+    path : 'employees/:id' ,component: EmployeeDetailsComponent , canActivate:[CheckForEmployeeDetails]
   },
   {
     path : 'Create' , component : CreateEmployeeComponent ,canDeactivate:[
@@ -24,6 +29,9 @@ const routes: Routes = [
   },
   {
     path : '',redirectTo:'/List',pathMatch:'full'
+  },
+  {
+    path : 'notFound' ,component: PageNotFoundComponent 
   }
 ];
 

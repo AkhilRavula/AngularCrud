@@ -65,7 +65,8 @@
           </div>
       </div>
       <div class="card-footer">
-        <a class="btn btn-primary" [routerLink]="['/List',{id:employee.id}]" >Back to List</a>
+        <a class="btn btn-primary" [routerLink]="['/List',{id:employee.id}]"
+         queryParamsHandling="preserve" >Back to List</a>
         <button class="btn btn-primary float-end" (click)="ViewNextEmployee()">Next Employee</button>
       </div>
     </div>

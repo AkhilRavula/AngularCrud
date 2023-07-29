@@ -41,7 +41,9 @@ export class EmployeeDetailsComponent {
       this.empid =1;
     }
 
-     this._Router.navigate(['/employees',this.empid]);
+     this._Router.navigate(['/employees',this.empid],{
+      queryParamsHandling : "preserve"
+     });
 
   }
 
