@@ -3,7 +3,7 @@ import { NgForm }   from '@angular/forms';
 import { DepartmentList } from '../Models/Department.model';
 import { Employee } from '../Models/employee.model';
 import { employeeservice } from './employee.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -13,11 +13,9 @@ import { Router } from '@angular/router';
 export class CreateEmployeeComponent {
 
    @ViewChild('employeeForm') public createempform! : NgForm;
-   employee : Employee={
-    id:1,email:"",FullName:"", gender:"", DateofBirth:new Date(2023,2,2),
-     Department:"", IsActive:true,phonenumber:123456789,
-     Photopath:""
-   };
+
+   employee : Employee ;
+   CreateEmployee :string;
 
    Departments : DepartmentList[] = [
     {
@@ -37,9 +35,42 @@ export class CreateEmployeeComponent {
     }
    ];
 
-    constructor(private employeeservice_ : employeeservice,private router_:Router)
+    constructor(private employeeservice_ : employeeservice,private router_:Router
+      ,private activatedroute : ActivatedRoute)
     {
 
+    }
+
+    ngOnInit()
+    {
+      (this.activatedroute.paramMap.
+        subscribe((routeparam)=> {
+          const id=+routeparam.get('id');
+          this.getEmployeesDetails(id);
+      }));
+        //const id = Number (this.activatedroute.snapshot.paramMap.get('id'));
+        
+    }
+
+    getEmployeesDetails(id: Number) {
+       if (id==0) {
+        this.employee ={
+          id:null,email:null,FullName:null, gender:null, DateofBirth:null,
+           Department:null, IsActive:null,phonenumber:null,
+           Photopath:null
+         };
+         this.CreateEmployee = "Create Employee";
+       } else 
+       {
+        this.CreateEmployee = "Edit Employee";
+          this.employeeservice_.GetEmployee(id).subscribe(
+            {
+              next : (emp) => this.employee= emp,
+              error : (err) => alert(err)
+            }
+          )
+          
+       }
     }
 
    Password!:string;
@@ -53,14 +84,38 @@ export class CreateEmployeeComponent {
   Department!:string;
   Photopath!:string;
   ShowPreview:boolean=false;
-
+ 
   SaveEmployee() : void
   {
-    const newemp:Employee = Object.assign({},this.employee);
-    this.employeeservice_.Save(newemp);
-    this.createempform.reset();
-    this.router_.navigate(['List']);
-  }
+   // const newemp:Employee = Object.assign({},this.employee);
+   if(this.employee.id==null)
+   {
+    this.employeeservice_.AddEmployee(this.employee).subscribe(
+      {
+        next : (emp) => {
+           console.log(emp)
+          this.createempform.reset();
+          this.router_.navigate(['List']);       
+        },
+        error : (err) => alert(err)
+      }
+    )
+   }
+   else
+   {
+    this.employeeservice_.UpdateEmployee(this.employee).subscribe(
+      {
+        next : (emp) => {
+           console.log(emp)
+          this.createempform.reset();
+          this.router_.navigate(['List']);       
+        },
+        error : (err) => alert(err)
+      }
+    )
+   }
+   
+  };
   
   TogglePreview(EmpForm : NgForm) :void
   {

@@ -21,6 +21,11 @@
     margin-bottom: 1rem;
   }
 
+button.btn
+{
+  width: 80px;
+}
+
 
 
   /* Absolute Center CSS Spinner */

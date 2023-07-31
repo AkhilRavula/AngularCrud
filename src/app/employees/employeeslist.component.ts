@@ -53,9 +53,9 @@ export class EmployeeslistComponent implements OnInit {
 
 
     this.listempservice.GetEmployees().
-    subscribe(empsList=>
-      { 
-        
+    subscribe( {
+      next : (empsList)=>
+      {       
         this.Employees = empsList
       
         if (this.ActivatedRoute_.snapshot.queryParamMap.has('SearchTerm')) {
@@ -65,21 +65,45 @@ export class EmployeeslistComponent implements OnInit {
         {
           this.FilterEmployees = this.Employees;
         }
-      
-      
-      });
+      },
+      error : (err)=>{ alert(err);}
+    }
+    );
 
     this.Selectedempid = Number(this.ActivatedRoute_.snapshot.paramMap.get('id'));
     //this.FilterEmployees = this.Employees;
-
- 
+    
+    
+     
   }
   
   OnClick(id:number)
   {
    this.Router_.navigate(['/employees',id],{
-    queryParams : {'SearchTerm' : this.SearchByTerm,'TestParam':'random'}
+    queryParams : {'SearchTerm' : this.SearchByTerm}
    });
+  }
+
+
+  editEmployee(id:number)
+  {
+    this.Router_.navigate(['/edit',id]);
+
+  }
+
+  deleteEmployee(id:Number)
+  {
+    this.listempservice.delete(id);
+    this.deleteFilterEmployee(id);
+  }
+
+  deleteFilterEmployee(empid:Number)
+  {
+    const foundIndex=this.FilterEmployees.findIndex(eid=>eid.id==empid);
+      if(foundIndex!=-1)
+      {
+      this.FilterEmployees.splice(foundIndex,1);
+      }
   }
 
 }

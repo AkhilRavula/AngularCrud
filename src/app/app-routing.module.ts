@@ -18,7 +18,8 @@ const routes: Routes = [
     path : 'employees/:id' ,component: EmployeeDetailsComponent , canActivate:[CheckForEmployeeDetails]
   },
   {
-    path : 'Create' , component : CreateEmployeeComponent ,canDeactivate:[
+    path : 'edit/:id' ,
+     component : CreateEmployeeComponent ,canDeactivate:[
       (cmp : CreateEmployeeComponent) => {
         if (cmp.createempform.dirty) {
           return confirm("Are you sure you want to change?")

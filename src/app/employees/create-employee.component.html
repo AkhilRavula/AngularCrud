@@ -1,8 +1,8 @@
 <form #employeeForm="ngForm" (ngSubmit)="SaveEmployee()" class="needs-validation"
  novalidate>
-<div class="card cardmargin">
+<div class="card cardmargin" *ngIf="employee">
     <h5 class="card-header" style="background-color: #5379a294;">
-        CreateEmployee
+        {{CreateEmployee}}
     </h5>
     <div class="card-body">      
             <div class="form-group">
@@ -92,7 +92,9 @@
                 <label for="dateofbirth">Date of Birth
                 </label>
                 <input type="text"  name="dateofbirth" id="dateofbirth" class="form-control" 
-                [(ngModel)]=employee.DateofBirth bsDatepicker [bsConfig]="{ isAnimated: true,
+                [ngModel]= "employee.DateofBirth | date: 'dd/MM/YYYY' "
+                 (ngModelChange)="employee.DateofBirth=$event"
+                  bsDatepicker [bsConfig]="{ isAnimated: true,
                     dateInputFormat: 'DD/MM/YYYY',containerClass:'theme-default' }" placement="right">
               </div>
             </div>

@@ -25,7 +25,12 @@ export class EmployeeDetailsComponent {
     this.activatedroute_.paramMap.subscribe((param)=>
     {
       this.empid= Number(param.get('id'));
-      this.employee=this._empservice.GetEmployee(this.empid);
+      this._empservice.GetEmployee(this.empid).subscribe(
+        {
+          next : (emp)=>this.employee=emp,
+          error : (err) => alert(err)
+        }
+      )
     });
     
   }
