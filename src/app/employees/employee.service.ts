@@ -117,13 +117,17 @@ export class employeeservice {
     }
 
 
-    delete(empid:Number)
+    deleteEmployee(empid:Number) : Observable<void>
     {
-      const foundIndex=this.ListEmployees.findIndex(eid=>eid.id==empid);
-      if(foundIndex!=-1)
-      {
-      this.ListEmployees.splice(foundIndex,1);
-      }
+
+      return this._httpclient.delete<void>(`${this.baseUrl}/${empid}`).
+      pipe(catchError(this.ErrorHandler));
+
+      // const foundIndex=this.ListEmployees.findIndex(eid=>eid.id==empid);
+      // if(foundIndex!=-1)
+      // {
+      // this.ListEmployees.splice(foundIndex,1);
+      // }
     }
 
 }

@@ -43,17 +43,6 @@
       "IsActive": true,
       "Photopath": "assets/Images/123.jpg",
       "phonenumber": 2345978642
-    },
-    {
-      "id": 6,
-      "email": "jhh@123",
-      "FullName": "raculaaa",
-      "gender": "Male",
-      "DateofBirth": "2023-07-20T14:35:14.000Z",
-      "Department": "3",
-      "IsActive": true,
-      "phonenumber": "123456789",
-      "Photopath": "assets/Images/123.jpg"
     }
   ]
 }

@@ -93,7 +93,12 @@ export class EmployeeslistComponent implements OnInit {
 
   deleteEmployee(id:Number)
   {
-    this.listempservice.delete(id);
+    this.listempservice.deleteEmployee(id).subscribe(
+    {
+        next :()=>{},
+        error : (err)=>alert(err)
+    }
+    );
     this.deleteFilterEmployee(id);
   }
 
